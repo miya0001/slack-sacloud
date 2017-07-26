@@ -43,12 +43,77 @@ slack.on('/sacloud', (msg, bot) => {
     })
   });
 
-  if (! eventEmitter.listeners(bot.payload.text).length) {
+  /**
+   * Halt the server.
+   *
+   * Usage: /sacloud halt <id>
+   */
+  eventEmitter.on('halt', (args) => {
+    bot.reply({
+      "text": ":computer: *Stopping the server ID:"+args[0]+"...*",
+      "mrkdwn": true
+    });
+    const server = new Server();
+    server.halt(args[0], function(result) {
+      if (result.response.error_msg) {
+        bot.reply({
+          "text": "Error: "+result.response.error_msg,
+          "mrkdwn": true
+        });
+      } else if (true === result.response.success) {
+        bot.reply({
+          "text": "Success: The machine will be stopped. :+1:",
+          "mrkdwn": true
+        });
+      } else {
+        bot.reply({
+          "text": "Error: Please try later.",
+          "mrkdwn": true
+        });
+      }
+    })
+  });
+
+  /**
+   * Start the server.
+   *
+   * Usage: /sacloud up <id>
+   */
+  eventEmitter.on('up', (args) => {
+    bot.reply({
+      "text": ":computer: *Starting the server ID:"+args[0]+"...*",
+      "mrkdwn": true
+    });
+    const server = new Server();
+    server.up(args[0], function(result) {
+      if (result.response.error_msg) {
+        bot.reply({
+          "text": "Error: "+result.response.error_msg,
+          "mrkdwn": true
+        });
+      } else if (true === result.response.success) {
+        bot.reply({
+          "text": "Success: The machine will be started. :+1:",
+          "mrkdwn": true
+        });
+      } else {
+        bot.reply({
+          "text": "Error: Please try later.",
+          "mrkdwn": true
+        });
+      }
+    })
+  });
+
+  const args = bot.payload.text.split(/\s+/)
+  const subcommand = args.shift();
+
+  if (! eventEmitter.listeners(subcommand).length) {
     bot.replyPrivate({
-      "text": "*Usage*:\n/sacloud list\n/sacloud halt <id>\n/sacloud destroy <id>",
+      "text": "*Usage*:\n/sacloud list\n/sacloud up <id>\n/sacloud halt <id>\n/sacloud destroy <id>",
       "mrkdwn": true
     });
   }
 
-  eventEmitter.emit(bot.payload.text);
+  eventEmitter.emit(subcommand, args);
 });
