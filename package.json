@@ -1,0 +1,19 @@
+{
+  "name": "slack-sacloud",
+  "description": "Manage DojoPaaS Cloud by Slack",
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "sls": "sls",
+    "deploy": "sls deploy -v",
+    "test": "mocha test/all"
+  },
+  "dependencies": {
+    "sacloud": "0.0.16",
+    "serverless-slack": "^1.0.25"
+  },
+  "devDependencies": {
+    "chai": "^4.1.0",
+    "mocha": "^3.4.2"
+  }
+}
