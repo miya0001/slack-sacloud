@@ -25,5 +25,5 @@ Slackを使用して、さくらのクラウド上のインスタンスをコン
 ### 指定したインスタンスを削除する
 
 ```
-/sacloud destroy
+/sacloud destroy <id>
 ```
