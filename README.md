@@ -4,31 +4,25 @@ Slackを使用して、さくらのクラウド上のインスタンスをコン
 
 ## Usage
 
-### インスタンスの一覧を見る
-
 ```
-/sacloud list
+/sacloud list # インスタンスの一覧を見る
 ```
 
-### 指定したインスタンスを起動する
-
 ```
-/sacloud up <id>
+/sacloud up <id> # 指定したインスタンスを起動する
 ```
 
-### 指定したインスタンスを停止する
-
 ```
-/sacloud halt <id>
+/sacloud halt <id> # 指定したインスタンスを停止する
 ```
 
-### 指定したインスタンスを削除する
-
 ```
-/sacloud destroy <id>
+/sacloud destroy <id> # 指定したインスタンスを削除する
 ```
 
 ## セットアップ
+
+### 各種APIキーの設定
 
 `local.yml` というファイルをプロジェクトルートに以下のような内容で作成してください。
 各種のAPIトークンはそこらへんからかき集めてください。
@@ -45,11 +39,66 @@ slack:
   slack_allowed_channel: "general"
 ```
 
-以下のコマンドを実行してください。
+#### SlackのAPI取得画面
+
+![](https://www.evernote.com/l/ABWPpnznXvZBbJGQXYMXfyF63aGAqALuVpEB/image.png)
+
+#### さくらのクラウドのAPI取得画面
+
+![](https://www.evernote.com/l/ABU5iAo6GnZBOLTEBJVWUf_Ov9IdOPJcxFkB/image.png)
+
+### 各種ライブラリのインストール
+
+#### Serverlessフレームワークをインストール
+
+```
+$ npm install -g serverless
+```
+
+インストール後に `sls config credentials` でAWSのcredentialを設定してください。
+
+#### 依存関係があるライブラリをインストール
 
 ```
 $ npm install
+```
+
+#### AWSにデプロイ
+
+```
 $ sls deploy
 ```
 
-セットアップ手順をちゃんと書いてくれる人募集中です。
+デプロイ後に以下のように出力されます。
+
+```
+Serverless: Packaging service...
+Serverless: Uploading CloudFormation file to S3...
+Serverless: Uploading artifacts...
+Serverless: Uploading service .zip file to S3 (5.68 MB)...
+Serverless: Validating template...
+Serverless: Updating Stack...
+Serverless: Checking Stack update progress...
+..............
+Serverless: Stack update finished...
+Service Information
+service: slack-sacloud
+stage: dev
+region: us-east-1
+api keys:
+  None
+endpoints:
+  POST - https://94yrylm7b7.execute-api.us-east-1.amazonaws.com/dev/slack
+  GET - https://94yrylm7b7.execute-api.us-east-1.amazonaws.com/dev/slack
+functions:
+  slack: slack-sacloud-dev-slack
+Serverless: Removing old service versions...
+```
+
+この中のエンドポイントのURLを以下の画面で入力してください。
+
+![](https://www.evernote.com/l/ABUBLGAXa4dM-L_wfug8Q2zC-t7e2Va4PhcB/image.png)
+
+![](https://www.evernote.com/l/ABXAgrVzni1JWrdHorI63WsdjrafAbSgtO8B/image.png)
+
+![](https://www.evernote.com/l/ABVJI9eHbfpLD6IGZDcK2CNEptL3E3DTzNQB/image.png)
