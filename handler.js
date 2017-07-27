@@ -105,6 +105,37 @@ slack.on('/sacloud', (msg, bot) => {
     })
   });
 
+  /**
+   * Destroy the server.
+   *
+   * Usage: /sacloud destroy <id>
+   */
+  eventEmitter.on('destroy', (args) => {
+    bot.reply({
+      "text": ":computer: *Destroying the server ID:"+args[0]+"...*",
+      "mrkdwn": true
+    });
+    const server = new Server();
+    server.destroy(args[0], function(result) {
+      if (result.response.error_msg) {
+        bot.reply({
+          "text": "Error: "+result.response.error_msg,
+          "mrkdwn": true
+        });
+      } else if (true === result.response.success) {
+        bot.reply({
+          "text": "Success: The machine will be destroyed. :+1:",
+          "mrkdwn": true
+        });
+      } else {
+        bot.reply({
+          "text": "Error: Please try later.",
+          "mrkdwn": true
+        });
+      }
+    })
+  });
+
   const args = bot.payload.text.split(/\s+/)
   const subcommand = args.shift();
 
