@@ -42,6 +42,7 @@ slack:
   slack_client_id: "xxxx"
   slack_client_secret: "xxxx"
   slack_verification_token: "xxxx"
+  slack_allowed_channel: "general"
 ```
 
 以下のコマンドを実行してください。

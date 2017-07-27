@@ -61,6 +61,7 @@ provider:
     SACLOUD_ACCESS_TOKEN: ${file(local.yml):sacloud.SACLOUD_ACCESS_TOKEN}
     SACLOUD_ACCESS_TOKEN_SECRET: ${file(local.yml):sacloud.SACLOUD_ACCESS_TOKEN_SECRET}
     SACLOUD_API: ${file(local.yml):sacloud.SACLOUD_API}
+    SLACK_ALLOWED_CHANNEL: ${file(local.yml):slack.slack_allowed_channel}
 
 functions:
   slack:

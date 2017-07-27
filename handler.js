@@ -9,6 +9,14 @@ exports.slack = slack.handler.bind(slack);
 
 // Slash Command handler
 slack.on('/sacloud', (msg, bot) => {
+  if (process.env.SLACK_ALLOWED_CHANNEL && (process.env.SLACK_ALLOWED_CHANNEL !== bot.payload.channel_id)) {
+    bot.replyPrivate({
+      "text": "You don't have permission.",
+      "mrkdwn": true
+    });
+    return;
+  }
+
   const eventEmitter = new events.EventEmitter();
 
   /**
