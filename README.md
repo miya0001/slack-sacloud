@@ -37,7 +37,7 @@ slack:
   slack_client_id: "xxxx"
   slack_client_secret: "xxxx"
   slack_verification_token: "xxxx"
-  slack_allowed_channel: "general"
+  slack_allowed_channel: "xxxx" # チャンネルのID
 ```
 
 #### SlackのAPI取得画面
@@ -103,3 +103,5 @@ Serverless: Removing old service versions...
 ![](https://www.evernote.com/l/ABXAgrVzni1JWrdHorI63WsdjrafAbSgtO8B/image.png)
 
 ![](https://www.evernote.com/l/ABVJI9eHbfpLD6IGZDcK2CNEptL3E3DTzNQB/image.png)
+
+https://github.com/johnagan/serverless-slack
