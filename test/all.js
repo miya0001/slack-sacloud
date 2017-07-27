@@ -11,10 +11,12 @@ const path       = require('path'),
 describe('sacloud', () => {
 
   it('should get instances', (done) => {
-    const server = new Server();
-    const servers = server.list((servers) => {
-      servers.should.be.a('array');
-      done();
+    Promise.resolve(false).then(function() {
+      const server = new Server();
+      const servers = server.list((servers) => {
+        servers.should.be.a('array');
+        done();
+      });
     });
   });
 

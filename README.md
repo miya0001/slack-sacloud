@@ -1,4 +1,5 @@
 # Slack sacloud
+[![Build Status](https://travis-ci.org/miya0001/slack-sacloud.svg?branch=master)](https://travis-ci.org/miya0001/slack-sacloud)
 
 Slackを使用して、さくらのクラウド上のインスタンスをコントロールすることができます。
 
