@@ -60,6 +60,7 @@ provider:
     ENABLE_LOGGING: ${self:custom.slack_enable_logging}
     SACLOUD_ACCESS_TOKEN: ${file(local.yml):sacloud.SACLOUD_ACCESS_TOKEN}
     SACLOUD_ACCESS_TOKEN_SECRET: ${file(local.yml):sacloud.SACLOUD_ACCESS_TOKEN_SECRET}
+    SACLOUD_API: ${file(local.yml):sacloud.SACLOUD_API}
 
 functions:
   slack:
@@ -92,7 +93,6 @@ functions:
                 headers:
                   Location: integration.response.body.errorMessage
                   Cache-Control: "'no-cache, no-store, must-revalidate'"
-
 
 resources:
   Resources:

@@ -35,6 +35,7 @@ Slackを使用して、さくらのクラウド上のインスタンスをコン
 
 ```
 sacloud:
+  SACLOUD_API: https://secure.sakura.ad.jp/cloud/zone/is1b/api/cloud/1.1/
   SACLOUD_ACCESS_TOKEN: "xxxx"
   SACLOUD_ACCESS_TOKEN_SECRET: "xxxx"
 slack:
