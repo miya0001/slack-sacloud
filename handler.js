@@ -58,7 +58,7 @@ slack.on('/sacloud', (msg, bot) => {
    */
   eventEmitter.on('halt', (args) => {
     bot.reply({
-      "text": `:computer: <@${bot.payload.user_id}> requests to stop the server ID: ${args[0]}...*`,
+      "text": `:computer: <@${bot.payload.user_id}> requests to stop the server ID: ${args[0]}.`,
       "mrkdwn": true
     });
     const server = new Server();
@@ -89,7 +89,7 @@ slack.on('/sacloud', (msg, bot) => {
    */
   eventEmitter.on('up', (args) => {
     bot.reply({
-      "text": `:computer: <@${bot.payload.user_id}> requests to start the server ID: ${args[0]}...*`,
+      "text": `:computer: <@${bot.payload.user_id}> requests to start the server ID: ${args[0]}.`,
       "mrkdwn": true
     });
     const server = new Server();
@@ -120,7 +120,7 @@ slack.on('/sacloud', (msg, bot) => {
    */
   eventEmitter.on('destroy', (args) => {
     bot.reply({
-      "text": `:computer: <@${bot.payload.user_id}> requests to destroy the server ID: ${args[0]}...*`,
+      "text": `:computer: <@${bot.payload.user_id}> requests to destroy the server ID: ${args[0]}.`,
       "mrkdwn": true
     });
     const server = new Server();
